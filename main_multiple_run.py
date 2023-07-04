@@ -17,9 +17,9 @@ moving_window = 3
 running_time = 5
 source_step_number = 10000
 target_step_number = 10000
-log_dir_w_TL = "/tmp/gym/w_tl/"
-log_dir_wo_TL = "/tmp/gym/wo_tl/"
-log_dir_w_TL_rs = "/tmp/gym/w_tl_rs/"
+log_dir_w_TL = "tmp/gym/w_tl/"
+log_dir_wo_TL = "tmp/gym/wo_tl/"
+log_dir_w_TL_rs = "tmp/gym/w_tl_rs/"
 
 for i in range(running_time):
 
