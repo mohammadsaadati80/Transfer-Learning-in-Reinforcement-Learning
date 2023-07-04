@@ -13,7 +13,7 @@ env_name = 'Pendulum-v1'
 algorithm = 'TD3'
 #### <<<<<<<
 
-moving_window = -1
+moving_window = 1
 log_dir_w_TL = "/tmp/gym/w_tl/"
 log_dir_wo_TL = "/tmp/gym/wo_tl/"
 log_dir_w_TL_rs = "/tmp/gym/w_tl_rs/"

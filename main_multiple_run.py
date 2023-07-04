@@ -7,10 +7,10 @@ start_time = time.time()
 
 #### >>>>>> We only need to env_name and algorithm
 # env = ['Pendulum-v1', 'CarRacing-v0', 'Acrobot-v1']
-env_name = 'Acrobot-v1'
+env_name = 'Pendulum-v1'
 # for each selected algorithm, please choose algorithm supporting its action space
 # We currently focus on TD3,DDPG (for Pendulum) and DQN (for Acrobot)
-algorithm = 'DQN'
+algorithm = 'TD3'
 
 #### <<<<<<<
 moving_window = 3

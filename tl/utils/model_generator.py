@@ -20,7 +20,7 @@ def get_reward_shaping_model(policy_name, env, src_model, num_sampling_episodes=
         target_model_reshape = RewardShapedDQN(policy_name, env, verbose=verbose, reward_shaper=reward_shaper)
         return target_model_reshape
 
-    if algo == 'TD3':
+    if algo == 'TD3' or algo == 'SAC':
         reward_shaper = create_td3_reward_shaper(src_model, num_sampling_episodes)
         target_model_reshape = RewardShapedTD3(policy_name, env, verbose=verbose, reward_shaper=reward_shaper)
         return target_model_reshape

@@ -6,7 +6,7 @@ from stable_baselines3.common.callbacks import BaseCallback
 
 from stable_baselines3.common.results_plotter import load_results, ts2xy
    
-def moving_average(values, window_size):
+def moving_average(values, window):
     
     """
     Smooth values by doing a moving average
@@ -14,19 +14,19 @@ def moving_average(values, window_size):
     :param window: (int)
     :return: (numpy array)
     """
-    if window_size % 2 == 0:
+    if window % 2 == 0:
         raise ValueError("Please pick an odd window size.")
     
-    # Create a filter that serves to average the window_size elements about each element.
-    averaging_filter = np.repeat(1.0, window_size) / window_size
+    # Create a filter that serves to average the window elements about each element.
+    averaging_filter = np.repeat(1.0, window) / window
     
     # Do a convolution, ensuring only to keep the center elements such that |conv| = len(values)
     moving_averages = np.convolve(averaging_filter, values, mode='same')
     
     # Moving averages need to be fixed at the ends as they were not averaged correctly.
-    for i in range(window_size // 2 + 1):
-        moving_averages[i] = moving_averages[i] * window_size / (window_size // 2 + 1 + i)
-        moving_averages[len(moving_averages) - 1 - i] = moving_averages[len(moving_averages) - 1 - i] * window_size / (window_size // 2 + 1 + i)
+    for i in range(window // 2 + 1):
+        moving_averages[i] = moving_averages[i] * window / (window // 2 + 1 + i)
+        moving_averages[len(moving_averages) - 1 - i] = moving_averages[len(moving_averages) - 1 - i] * window / (window // 2 + 1 + i)
         
     return moving_averages
 
@@ -148,7 +148,7 @@ def extract_xy_for_plotting(dir, running_time_num, moving_window):
 
     y_moving_averages = []
     for episode_reward_list in y:
-        y_moving_averages.append(moving_average(episode_reward_list, window_size=moving_window))
+        y_moving_averages.append(moving_average(episode_reward_list, window=moving_window))
 
     y_ave, y_std = get_avg_std(y_moving_averages)
 
