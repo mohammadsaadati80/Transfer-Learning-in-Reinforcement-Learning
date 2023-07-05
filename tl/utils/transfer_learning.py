@@ -99,7 +99,7 @@ def transfer_execute(source_env,
 
     # Get monitor of the target environment as before. Also, create a copy of the source model that is used in reshaping.
     import copy
-    reshaping_source_model = copy.deepcopy(source_model)
+    reshaping_source_model = source_model
 
     target_env_monitor_rs2 = Monitor(target_env, log_dir_w_full_TL_rs)
     
